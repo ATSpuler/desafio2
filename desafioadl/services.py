@@ -10,3 +10,16 @@ def crear_sub_tarea(texto:str, idtarea:int):
     subtarea = SubTarea(descripcion=texto, tarea=tarea_encontrada)
     subtarea.save()
     # imprimir en pantalla
+def elimina_tarea(idtarea:int):
+    t = Tarea.objects.get(id=idtarea) 
+    t.eliminada = True
+    t.save()
+
+def elimina_sub_tarea(idsubtarea:int):
+    st = SubTarea.objects.get(id=idsubtarea) 
+    st.eliminada = True
+    st.save()
+
+def matar_tarea(idtarea:int):
+    t = Tarea.objects.get(id=idtarea)
+    t.delete()
